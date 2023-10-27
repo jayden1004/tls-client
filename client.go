@@ -300,7 +300,7 @@ func (c *httpClient) Do(req *http.Request) (*http.Response, error) {
 
 	req.Header[http.HeaderOrderKey] = allToLower(req.Header[http.HeaderOrderKey])
 	c.headerLck.Unlock()
-
+	c.logger.Debug("making request to %s", req.URL.String())
 	if c.config.debug {
 		debugReq := req.Clone(context.Background())
 
